@@ -74,8 +74,10 @@ export default function ClientOrdersPage() {
                   defaultValue="All"
                 >
                   {orderTypes.map((type) => (
-                    <option key={type}>{type}</option>
-                  )}
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
                 </select>
               </div>
               <button

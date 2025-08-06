@@ -57,7 +57,17 @@ const mockOrder = {
   ],
 };
 
-export default async function OrderDetailPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export const metadata = {
+  title: 'Order Details | Crotonn Writers',
+  description: 'View and manage your order details',
+};
+
+export default async function OrderDetailPage({ params }: PageProps) {
   const user = await getCurrentUser();
   if (!user) {
     return notFound();
