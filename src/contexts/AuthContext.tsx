@@ -15,7 +15,6 @@ type AuthContextType = {
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, userData: any) => Promise<void>;
   signOut: () => Promise<void>;
-  // signInWithGoogle: () => Promise<void>; // Disabled for MVP
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -135,19 +134,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     router.push('/auth/login');
   };
 
-  /*
-  // Google OAuth (disabled for MVP)
-  const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/api/auth/callback`,
-      },
-    });
-    if (error) throw error;
-  };
-  */
-
   const value = {
     user,
     session,
@@ -156,7 +142,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     signIn,
     signUp,
     signOut,
-    // signInWithGoogle, // disabled
   };
 
   return (

@@ -15,8 +15,7 @@ export default function SignUpPage() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
-  const { signUp, signInWithGoogle } = useAuth();
+  const { signUp } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -43,17 +42,7 @@ export default function SignUpPage() {
     }
   };
 
-  const handleGoogleSignUp = async () => {
-    try {
-      setIsGoogleLoading(true);
-      await signInWithGoogle();
-      router.push('/dashboard');
-    } catch (error: any) {
-      toast.error(error.message || 'Failed to sign up with Google');
-    } finally {
-      setIsGoogleLoading(false);
-    }
-  };
+  
 
   return (
     <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-50">
