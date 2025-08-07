@@ -1,0 +1,93 @@
+markdown
+CopyEdit
+# 📝 Crotonn Writers – AI Prompt for Gemini
+
+**Role:**
+Act as a **senior full-stack and cloud software engineer** specializing in **Next.js, Node.js, Supabase, Vercel hosting, Stripe/PayPal integration, and PDF automation**.
+You are tasked to **design and generate a full-stack, production-ready academic writing platform** with automated workflows, protected dashboards, and modern UX.
+
+---
+
+## **1️⃣ Project Context****Project Name:** Crotonn Writers
+**Goal:** Build a modern academic writing and design service platform with three dashboards (Admin, Writer, Client), seamless payments, automated invoices, and a strong client UX.
+
+**Tech Stack:**
+- **Frontend:** Next.js (React 18, App Router, TailwindCSS, Framer Motion for animations)
+- **Backend:** Node.js / Next.js API routes
+- **Database & Auth:** Supabase (Postgres, Row Level Security, JWT)
+- **Hosting:** Vercel (frontend & backend), Supabase (DB & storage)
+- **Payments:** Stripe (Credit/Debit), PayPal (Global), Mpesa (later), Payoneer (later)
+- **File Storage:** Supabase Storage (for orders, submissions, and invoices)
+- **PDF Generation:** pdfkit / pdfmake / Puppeteer for stamped invoices
+- **Future Integrations:** Turnitin, Grammarly, ZeroGPT, Copyleaks for plagiarism checks
+
+**Constraints:**
+- Mobile-first, fully responsive, minimalistic and intuitive UI
+- SEO-optimized landing page with high conversion rate
+- Strict route protection with JWT & role-based redirects
+- Automatic invoice PDF generation with digital stamp and unique Order ID
+- Personalized dashboards with real-time updates and chat
+- Analytics for admin to monitor orders, revenue, and writer performance
+
+---
+
+## **2️⃣ Pages & Routes**### **Landing Page (Public)**- Hero with CTA (*Place Your Order Now*)
+- How It Works (3 steps with icons)
+- Services Offered (Academic Writing, Thesis, Graphic Design, Editing)
+- Pricing Estimator (dynamic form)
+- Testimonials (auto-sliding with 4.5–5 star ratings)
+- Strong CTA Section (*Sign Up & Place Order*)
+- Footer: About, Contact, FAQ, Privacy, Terms + Social Links
+
+**Interactions:**
+- Clicking “Place Order” or “Sign Up” triggers **modal login/signup** (blurred background)
+- Non-logged users are prompted to **sign up/login first**
+- Post-signup → redirect to **Client Dashboard** with personalized welcome
+
+---
+
+### **Client Dashboard (Protected)**- **Place Order:**
+  - Title, Pages, Deadline, Instructions, File Upload
+  - Delivery Preference: Email / WhatsApp
+  - Auto-generate **Order ID** on submit
+- **My Orders:** Table view with filter (Pending, In Progress, Completed)
+- **Payments:** Invoice download, status & method
+- **Chat:** Real-time with file sharing
+- **Profile:** Name, Email, Phone, Picture, Delivery Preference
+
+---
+
+### **Writer Dashboard (Protected)**- **Assigned Orders:** Order ID, status, deadlines
+- **Submit Work:** Upload file → triggers admin review
+- **Order Details:** Include APA/MLA/Harvard/Chicago style guides
+- **Earnings & Performance:** Future phase, ratings & warnings
+
+---
+
+### **Admin Dashboard (Protected)**- **Overview:** Total Orders, Revenue, Pending vs Completed (charts)
+- **Manage Orders:** Assign to writers, track statuses
+- **Clients & Writers:** Full records + performance stats
+- **Payments & Invoices:** Auto-generate stamped PDFs, email delivery
+- **Analytics:** Signups, clicks, conversion rates, revision rates
+- **Delivery:** Send work via Email or WhatsApp automatically
+
+---
+
+### **4️⃣ System Design****Auth & Roles:**
+- Google Sign-In or Email+Password via Supabase Auth
+- JWT-based session, role-based redirects
+- Routes:
+  - `/dashboard/client` → Client
+  - `/dashboard/writer` → Writer
+  - `/dashboard/admin` → Admin
+  - `/order/:id` → Authenticated & role-verified
+
+**Order Workflow:**
+1. Client submits order
+2. Price auto-calculated
+3. Stripe or PayPal payment
+4. Generate Order ID + Invoice PDF (with digital stamp)
+5. Email confirmation & dashboard link
+
+**Invoice Format Example:**
+
