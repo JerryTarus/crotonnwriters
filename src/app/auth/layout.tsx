@@ -19,12 +19,10 @@ export default function AuthLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>
-          <div className="min-h-screen bg-gray-50">
-            {children}
-          </div>
-          <Toaster position="top-right" />
-        </AuthProvider>
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+          {children}
+        </div>
+        <Toaster position="top-right" />
       </body>
     </html>
   );
